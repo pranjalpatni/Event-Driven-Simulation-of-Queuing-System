@@ -10,16 +10,16 @@ Event-Driven Simulation:
 
 In the simulation of a Markovian queueing system, we need to consider two basic types of events: arrivals and departures. When an arrival event occurs, we need to perform the following tasks:
 
-- Update the system time to reflect the time of the current arrival.
-- Increment the system size if the system is not at its full capacity and the arrival is not blocked.
-- If there is an idle server, then generate a departure event for the new arrival. The departure time will be the current system time plus an exponentially distributed length of time with parameter µ.
-- Generate the next arrival event, if applicable. The time of the next arrival will be the current system time plus an exponentially distributed length of time.
+• Update the system time to reflect the time of the current arrival.
+• Increment the system size if the system is not at its full capacity and the arrival is not blocked.
+• If there is an idle server, then generate a departure event for the new arrival. The departure time will be the current system time plus an exponentially distributed length of time with parameter µ.
+• Generate the next arrival event, if applicable. The time of the next arrival will be the current system time plus an exponentially distributed length of time.
 
 When a departure event occurs, we must perform the following steps:
-- Update the system time.
-- Decrement the system size.
-- If there are customers waiting in the queue, and if a server is available, then one customer will enter service when the departure occurs. Generate a departure event for the customer entering service.
-- If applicable, generate an arrival event.
+• Update the system time.
+• Decrement the system size.
+• If there are customers waiting in the queue, and if a server is available, then one customer will enter service when the departure occurs. Generate a departure event for the customer entering service.
+• If applicable, generate an arrival event.
 
 Once the tasks associated with an event have been completed, the simulation should go on to the next event. In order to manage events, we maintain an event list. An event list consists of a linked list(or any collection) whose elements are data structures which indicate the type of event and the time at which the event occurs. By sorting the event list in chronological order, the next event can be selected from the head of the event list. When a new event is generated, it is placed in the event list in the correct chronological sequence. Note that the event list is simply a data structure for keeping track of the timing of events in the simulation. The event list does not represent the state of the queueing system.
 
